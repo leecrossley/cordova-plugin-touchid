@@ -5,30 +5,37 @@
 
 #import "TouchID.h"
 
+#if __has_include(<LocalAuthentication/LocalAuthentication.h>)
 #import <LocalAuthentication/LocalAuthentication.h>
+#endif
 
 @implementation TouchID
 
 - (void) authenticate:(CDVInvokedUrlCommand*)command;
 {
-    NSMutableDictionary *args = [command.arguments objectAtIndex:0];
-    NSString *text = [args objectForKey:@"text"];
-
     __block CDVPluginResult* pluginResult = nil;
 
+#if TARGET_IPHONE_SIMULATOR
+    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
+#else
     if (NSClassFromString(@"LAContext") != nil)
     {
+        NSMutableDictionary *args = [command.arguments objectAtIndex:0];
+        NSString *text = [args objectForKey:@"text"];
+
         LAContext *laContext = [[LAContext alloc] init];
         NSError *authError = nil;
 
         if ([laContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&authError])
         {
-            [laContext evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics
-                      localizedReason:text reply:^(BOOL success, NSError *error)
+            [laContext evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics localizedReason:text reply:^(BOOL success, NSError *error)
              {
-                 if (success) {
+                 if (success)
+                 {
                      pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-                 } else {
+                 }
+                 else
+                 {
                      pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:[error localizedDescription]];
                  }
              }];
@@ -42,7 +49,7 @@
     {
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
     }
-
+#endif
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
@@ -51,6 +58,9 @@
 
     __block CDVPluginResult* pluginResult = nil;
 
+#if TARGET_IPHONE_SIMULATOR
+    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
+#else
     if (NSClassFromString(@"LAContext") != nil)
     {
         LAContext *laContext = [[LAContext alloc] init];
@@ -69,7 +79,7 @@
     {
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
     }
-
+#endif
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
