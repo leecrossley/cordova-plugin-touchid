@@ -10,5 +10,6 @@
 @interface TouchID : CDVPlugin
 
 - (void) authenticate:(CDVInvokedUrlCommand*)command;
+- (void) checkSupport:(CDVInvokedUrlCommand*)command;
 
 @end

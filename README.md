@@ -28,9 +28,20 @@ window.touchid.authenticate(successCallback, failureCallback, text);
 
 *NOTE: The localised text you present to the user should provide a clear reason for why you are requesting they authenticate themselves, and what action you will be taking based on that authentication.
 
+### Check support
+
+Although the `authenticate()` function will return an error if the user is unable to authenticate via Touch ID, you may wish to check support without prompting the user to authenticate. This can be done by passing following arguments to the `checkSupport()` function:
+
+1. Success callback (called if authentication is possible)
+2. Not supported callback (called if policy can not be evaluated, with error message)
+
+```
+window.touchid.checkSupport(successCallback, notSupportedCallback);
+```
+
 ## Platforms
 
-iOS >= 8
+iOS >= 8 (currently beta)
 
 ## License
 
