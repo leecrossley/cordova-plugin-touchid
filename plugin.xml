@@ -18,5 +18,6 @@
         </config-file>
         <header-file src="src/ios/TouchID.h" />
         <source-file src="src/ios/TouchID.m" />
+        <framework src="LocalAuthentication.framework" />
     </platform>
 </plugin>
