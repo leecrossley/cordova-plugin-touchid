@@ -2,7 +2,7 @@
 
 Cordova Plugin to leverage the iOS local authentication framework to allow in-app user authentication using Touch ID.
 
-*Important:* You must target a real device when building. If you target the simulator, the build will fail.
+**Important:** You must target a real device when building. If you target the simulator, the build will fail.
 
 ## 1 step install
 
