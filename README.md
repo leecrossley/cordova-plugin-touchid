@@ -18,13 +18,15 @@ Ensure you use the plugin after your deviceready event has been fired.
 
 Pass the following arguments to the `authenticate()` function, to prompt the user to authenticate via TouchID:
 
-1. Success callback
-2. Error callback
-3. Text explaining why the app needs authentication
+1. Success callback (called on successful authentication)
+2. Failure callback (called on error or if authentication fails)
+3. Localised text explaining why the app needs authentication*
 
 ```
-window.touchid.authenticate(onSuccess, onError, text);
+window.touchid.authenticate(successCallback, failureCallback, text);
 ```
+
+*NOTE: The localised text you present to the user should provide a clear reason for why you are requesting they authenticate themselves, and what action you will be taking based on that authentication.
 
 ## Platforms
 
