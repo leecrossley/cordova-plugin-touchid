@@ -5,8 +5,6 @@
 
 #import <Cordova/CDVPlugin.h>
 
-@import LocalAuthentication
-
 @interface TouchID : CDVPlugin
 
 - (void) authenticate:(CDVInvokedUrlCommand*)command;
