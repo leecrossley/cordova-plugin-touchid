@@ -11,8 +11,7 @@
 
 - (void) authenticate:(CDVInvokedUrlCommand*)command;
 {
-    NSMutableDictionary *args = [command.arguments objectAtIndex:0];
-    NSString *text = [args objectForKey:@"text"];
+    NSString *text = [command.arguments objectAtIndex:0];
 
     __block CDVPluginResult* pluginResult = nil;
 
@@ -24,16 +23,16 @@
         if ([laContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&authError])
         {
             [laContext evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics localizedReason:text reply:^(BOOL success, NSError *error)
-            {
-                if (success)
-                {
-                    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-                }
-                else
-                {
-                    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:[error localizedDescription]];
-                }
-            }];
+             {
+                 if (success)
+                 {
+                     pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+                 }
+                 else
+                 {
+                     pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:[error localizedDescription]];
+                 }
+             }];
         }
         else
         {
