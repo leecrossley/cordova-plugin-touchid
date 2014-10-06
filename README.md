@@ -25,7 +25,7 @@ Pass the following arguments to the `authenticate()` function, to prompt the use
 3. Localised text explaining why the app needs authentication*
 
 ```
-window.touchid.authenticate(successCallback, failureCallback, text);
+touchid.authenticate(successCallback, failureCallback, text);
 ```
 
 *NOTE: The localised text you present to the user should provide a clear reason for why you are requesting they authenticate themselves, and what action you will be taking based on that authentication.
@@ -38,7 +38,7 @@ Although the `authenticate()` function will return an error if the user is unabl
 2. Not supported callback (called if policy can not be evaluated, with error message)
 
 ```
-window.touchid.checkSupport(successCallback, notSupportedCallback);
+touchid.checkSupport(successCallback, notSupportedCallback);
 ```
 
 ## Platforms
