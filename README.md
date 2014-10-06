@@ -6,6 +6,14 @@ Cordova Plugin to leverage the iOS local authentication framework to allow in-ap
 
 ## 1 step install
 
+#### Latest published version
+
+```
+cordova plugin add uk.co.ilee.touchid
+```
+
+#### Latest version from GitHub
+
 ```
 cordova plugin add https://github.com/leecrossley/cordova-plugin-touchid.git
 ```
