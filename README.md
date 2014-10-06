@@ -43,7 +43,7 @@ window.touchid.checkSupport(successCallback, notSupportedCallback);
 
 ## Platforms
 
-iOS >= 8 (currently beta)
+iOS 8+
 
 ## License
 
