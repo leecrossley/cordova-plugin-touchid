@@ -4,6 +4,7 @@
     <author>Lee Crossley (http://ilee.co.uk/)</author>
     <description>Cordova Plugin to leverage the iOS local authentication framework to allow in-app user authentication using Touch ID.</description>
     <keywords>cordova, touch id, touchid, authentication, fingerprint, id, login</keywords>
+    <license>MIT</license>
     <engines>
         <engine name="cordova" version=">=3.0.0" />
     </engines>
