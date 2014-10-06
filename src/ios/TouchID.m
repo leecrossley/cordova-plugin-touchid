@@ -32,19 +32,21 @@
                  {
                      pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:[error localizedDescription]];
                  }
+
+                 [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
              }];
         }
         else
         {
             pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:[authError localizedDescription]];
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
         }
     }
     else
     {
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     }
-
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
 - (void) checkSupport:(CDVInvokedUrlCommand*)command;
