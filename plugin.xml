@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="uk.co.ilee.touchid" version="0.2.0">
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="uk.co.ilee.touchid" version="0.3.0">
     <name>Touch ID</name>
     <author>Lee Crossley (http://ilee.co.uk/)</author>
     <description>Cordova Plugin to leverage the iOS local authentication framework to allow in-app user authentication using Touch ID.</description>
-    <keywords>cordova, touch id, touchid, authentication, fingerprint, id, login</keywords>
+    <keywords>cordova, touch id, touchid, authentication, fingerprint, id, login, passcode</keywords>
     <license>MIT</license>
     <engines>
         <engine name="cordova" version=">=3.0.0" />
@@ -20,5 +20,6 @@
         <header-file src="src/ios/TouchID.h" />
         <source-file src="src/ios/TouchID.m" />
         <framework src="LocalAuthentication.framework" />
+        <framework src="Security.framework" />
     </platform>
 </plugin>
