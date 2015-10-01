@@ -13,7 +13,7 @@ TouchID.prototype.authenticate = function (successCallback, errorCallback, text)
 };
 
 TouchID.prototype.checkSupport = function (successCallback, errorCallback) {
-    exec(successCallback, errorCallback, "TouchID", "checkSupport");
+    exec(successCallback, errorCallback, "TouchID", "checkSupport", []);
 };
 
 module.exports = new TouchID();
