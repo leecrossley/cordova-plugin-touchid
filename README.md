@@ -4,7 +4,7 @@ Cordova Plugin to leverage the iOS local authentication framework to allow in-ap
 
 **Important:** You must target a real device when building. If you target the simulator, the build will fail.
 
-## 1 step install
+## Install
 
 #### Latest published version on npm (with Cordova CLI >= 5.0.0)
 
