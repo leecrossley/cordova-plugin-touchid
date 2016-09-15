@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-touchid",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "author": "Lee Crossley <leee@hotmail.co.uk> (http://ilee.co.uk/)",
   "description": "Cordova Plugin to leverage the iOS local authentication framework to allow in-app user authentication using Touch ID.",
   "cordova": {
