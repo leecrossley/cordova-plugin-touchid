@@ -30,7 +30,35 @@
                  }
                  else
                  {
-                     pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:[error localizedDescription]];
+                     NSString *errorCode = nil;
+                     switch (error.code) {
+                         case LAErrorAuthenticationFailed:
+                             errorCode = @"authenticationFailed";
+                             break;
+                         case LAErrorUserCancel:
+                             errorCode = @"userCancel";
+                             break;
+                         case LAErrorUserFallback:
+                             errorCode = @"userFallback";
+                             break;
+                         case LAErrorSystemCancel:
+                             errorCode = @"systemCancel";
+                             break;
+                         case LAErrorPasscodeNotSet:
+                             errorCode = @"passcodeNotSet";
+                             break;
+                         case LAErrorTouchIDNotAvailable:
+                             errorCode = @"touchIDNotAvailable";
+                             break;
+                         case LAErrorTouchIDNotEnrolled:
+                             errorCode = @"touchIDNotEnrolled";
+                             break;
+                         default:
+                             errorCode = @"unknown";
+                             break;
+                     }
+                     
+                     pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:errorCode];
                  }
 
                  [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
