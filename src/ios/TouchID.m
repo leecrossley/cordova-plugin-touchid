@@ -12,6 +12,7 @@
 - (void) authenticate:(CDVInvokedUrlCommand*)command;
 {
     NSString *text = [command.arguments objectAtIndex:0];
+    LAPolicy authPolicy = [self determineLAPolicyFromCommand:command flagIndex:1];
 
     __block CDVPluginResult* pluginResult = nil;
 
@@ -20,9 +21,9 @@
         LAContext *laContext = [[LAContext alloc] init];
         NSError *authError = nil;
 
-        if ([laContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&authError])
+        if ([laContext canEvaluatePolicy:authPolicy error:&authError])
         {
-            [laContext evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics localizedReason:text reply:^(BOOL success, NSError *error)
+            [laContext evaluatePolicy:authPolicy localizedReason:text reply:^(BOOL success, NSError *error)
              {
                  if (success)
                  {
@@ -79,7 +80,7 @@
 
 - (void) checkSupport:(CDVInvokedUrlCommand*)command;
 {
-
+    LAPolicy authPolicy = [self determineLAPolicyFromCommand:command flagIndex:1];
     __block CDVPluginResult* pluginResult = nil;
 
     if (NSClassFromString(@"LAContext") != nil)
@@ -87,7 +88,7 @@
         LAContext *laContext = [[LAContext alloc] init];
         NSError *authError = nil;
 
-        if ([laContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&authError])
+        if ([laContext canEvaluatePolicy:authPolicy error:&authError])
         {
             pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
         }
@@ -102,6 +103,20 @@
     }
 
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+- (LAPolicy) determineLAPolicyFromCommand:(CDVInvokedUrlCommand *)command flagIndex:(int)idx
+{
+    BOOL canFallbackToPasscode = NO;
+    if (command.arguments.count >= idx+1) {
+        NSString *txtFallbackToPasscode =
+            [command argumentAtIndex:(idx) withDefault:@"false" andClass:[NSString class]];
+        if ([txtFallbackToPasscode isEqualToString:@"true"]) {
+            canFallbackToPasscode = true;
+        }
+    }
+    LAPolicy policy = canFallbackToPasscode ? LAPolicyDeviceOwnerAuthentication : LAPolicyDeviceOwnerAuthenticationWithBiometrics;
+    return policy;
 }
 
 @end
