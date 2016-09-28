@@ -80,7 +80,7 @@
 
 - (void) checkSupport:(CDVInvokedUrlCommand*)command;
 {
-    LAPolicy authPolicy = [self determineLAPolicyFromCommand:command flagIndex:1];
+    LAPolicy authPolicy = [self determineLAPolicyFromCommand:command flagIndex:0];
     __block CDVPluginResult* pluginResult = nil;
 
     if (NSClassFromString(@"LAContext") != nil)
