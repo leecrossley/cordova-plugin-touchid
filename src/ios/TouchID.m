@@ -109,9 +109,9 @@
 {
     BOOL canFallbackToPasscode = NO;
     if (command.arguments.count >= idx+1) {
-        NSString *txtFallbackToPasscode =
-            [command argumentAtIndex:(idx) withDefault:@"false" andClass:[NSString class]];
-        if ([txtFallbackToPasscode isEqualToString:@"true"]) {
+        NSNumber *numFallbackToPasscode =
+            [command argumentAtIndex:(idx) withDefault:@"false" andClass:[NSNumber class]];
+        if (numFallbackToPasscode.intValue == 1) {
             canFallbackToPasscode = true;
         }
     }
