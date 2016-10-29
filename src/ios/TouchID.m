@@ -8,7 +8,9 @@
 #import <LocalAuthentication/LocalAuthentication.h>
 
 @implementation TouchID
-
+- (void)pluginInitialize{
+    NSLog(@"Init-ing");
+}
 - (void) authenticate:(CDVInvokedUrlCommand*)command;
 {
     NSString *text = [command.arguments objectAtIndex:0];
