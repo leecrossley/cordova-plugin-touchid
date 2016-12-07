@@ -31,9 +31,10 @@ Pass the following arguments to the `authenticate()` function, to prompt the use
 1. Success callback (called on successful authentication)
 2. Failure callback (called on error or if authentication fails)
 3. Localised text explaining why the app needs authentication*
+4. Boolean to indicate if falling back to passcode authentication is allowed (default is false, if not provided).
 
 ```
-touchid.authenticate(successCallback, failureCallback, text);
+touchid.authenticate(successCallback, failureCallback, text, true);
 ```
 
 *NOTE: The localised text you present to the user should provide a clear reason for why you are requesting they authenticate themselves, and what action you will be taking based on that authentication.
