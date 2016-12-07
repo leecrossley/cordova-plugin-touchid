@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/leecrossley/cordova-plugin-touchid.git"
+    "url": "git+https://github.com/tsanidas/cordova-plugin-touchid.git"
   },
   "keywords": [
     "cordova",
@@ -33,7 +33,7 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/leecrossley/cordova-plugin-touchid/issues"
+    "url": "https://github.com/tsanidas/cordova-plugin-touchid/issues"
   },
-  "homepage": "https://github.com/leecrossley/cordova-plugin-touchid#readme"
+  "homepage": "https://github.com/tsanidas/cordova-plugin-touchid#readme"
 }
