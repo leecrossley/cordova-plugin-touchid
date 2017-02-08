@@ -93,7 +93,19 @@
         }
         else
         {
-            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:[authError localizedDescription]];
+            NSString *errorCode = nil;
+            switch (authError.code) {
+                case LAErrorPasscodeNotSet:
+                    errorCode = @"passcodeNotSet";
+                    break;
+                case LAErrorTouchIDNotEnrolled:
+                    errorCode = @"touchIDNotEnrolled";
+                    break;
+                default:
+                    errorCode = @"touchIDNotAvailable";
+                    break;
+            }
+            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:errorCode];
         }
     }
     else
